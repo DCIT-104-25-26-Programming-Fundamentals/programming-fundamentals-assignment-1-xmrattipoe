@@ -31,7 +31,36 @@
 # - The main block must call the function and print the result.
 #
 
-# =============================================================================
-# YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
-# =============================================================================
+def is_prime(n):
+    """
+    Return True if n is a prime number, False otherwise.
+    """
+    # Numbers less than 2 are never prime
+    if n < 2:
+        return False
 
+    # 2 is the only even prime number
+    if n == 2:
+        return True
+
+    # Eliminate other even numbers quickly
+    if n % 2 == 0:
+        return False
+
+    # Check odd divisors up to the square root of n
+    divisor = 3
+    while divisor * divisor <= n:
+        if n % divisor == 0:
+            return False
+        divisor += 2
+
+    return True
+
+
+if __name__ == "__main__":
+    number = int(input("Enter a number: "))
+
+    if is_prime(number):
+        print(f"{number} is a prime number.")
+    else:
+        print(f"{number} is NOT a prime number.")
